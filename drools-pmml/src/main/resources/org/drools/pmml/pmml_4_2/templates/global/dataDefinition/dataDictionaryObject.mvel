@@ -1,0 +1,37 @@
+package @{packageName}
+
+@code{
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+}
+
+@foreach{importEntry: imports}
+import @{importEntry};
+@end{}
+
+@comment{
+**************************************************
+    Generated Type from PMML Data Dictionary
+**************************************************
+}
+
+
+public class @{className} implements java.io.Externalizable {
+   private static final long serialVersionUID = 19630331;
+
+   @foreach{dataField: dataFields}
+   private @{dataField.type} @{dataField.name};
+
+   public @{dataField.type} get@{dataField.name}() {
+      return this.@{dataField.name};
+   }
+
+   public void set@{dataField.name}( @{dataField.type} var) {
+      this.@{dataField.name} = var;
+   }
+   @end{}
+}
