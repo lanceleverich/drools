@@ -1,13 +1,7 @@
-package @{packageName}
+package @{packageName};
 
-@code{
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-}
+
+
 
 @foreach{importEntry: imports}
 import @{importEntry};
@@ -19,19 +13,54 @@ import @{importEntry};
 **************************************************
 }
 
-
+/*
+ * Generated type from PMML DataDictionary
+*/
 public class @{className} implements java.io.Externalizable {
    private static final long serialVersionUID = 19630331;
 
+   private @{className}_ metaData;
    @foreach{dataField: dataFields}
    private @{dataField.type} @{dataField.name};
+   @end{}
 
-   public @{dataField.type} get@{dataField.name}() {
+   public @{className}_ getMetaData() {
+      return this.metaData;
+   }
+   
+   @foreach{dataField: dataFields}
+   public @{dataField.type} get@{dataField.getCapitalizedName()}() {
       return this.@{dataField.name};
    }
 
-   public void set@{dataField.name}( @{dataField.type} var) {
+   public void set@{dataField.getCapitalizedName()}( @{dataField.type} var) {
       this.@{dataField.name} = var;
    }
+   
+   public void set@{dataField.getCapitalizedName()}Valid(boolean validValue) {
+      metaData.@{dataField.name}Valid = validValue;
+   }
+   
+   public void set@{dataField.getCapitalizedName()}Missing(boolean missingValue) {
+      metaData.@{dataField.name}Missing = missingValue;
+   }
+   
    @end{}
+   
+   public class @{className}_ {
+      @foreach{dataField: dataFields}
+      private boolean @{dataField.name}Valid;
+      private boolean @{dataField.name}Missing;
+      @end{}
+      
+      @foreach{dataField: dataFields}
+      public boolean is@{dataField.getCapitalizedName()}Valid() {
+         return this.@{dataField.name}Valid;
+      }
+      
+      public boolean is@{dataField.getCapitalizedName()}Missing() {
+         return this.@{dataField.name}Missing;
+      }
+      @end{}
+   }
 }

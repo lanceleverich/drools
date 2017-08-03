@@ -16,8 +16,9 @@
 
 package org.drools.pmml.pmml_4_2;
 
-public enum PMMLModelType {
-    SCORECARD,
-    TREE,
-    UNKNOWN;
+public interface PMMLModel {
+    public String getModelId();
+    public PMMLModelType getModelType();
+    public String getMiningSchemaPojo();
+    public String getOutputPojo();
 }

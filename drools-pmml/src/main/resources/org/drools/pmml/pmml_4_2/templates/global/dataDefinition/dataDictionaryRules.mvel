@@ -1,0 +1,9 @@
+@declare("missingValueHandler")
+rule "@{objectName).@{fieldName}-setAsMissingValue"
+when
+   $obj: @{objectName}( @{fieldName} == @{declaredAsMissing} )
+   not exist DeclaredMissing( objectName == @{objectName}, fieldName == @{fieldName} )
+then
+    insert( new DeclaredMissing( @{objectName}, @{fieldName} );
+end
+@end{}
