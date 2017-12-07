@@ -498,9 +498,23 @@ public class PMML4Compiler implements PMMLCompiler {
     
     
     public List<PMMLResource> precompile( String fileName, ClassLoader classLoader, KieBaseModel rootKieBaseModel) {
-    	Resource res = new ClassPathResource(fileName);
+    	Resource res = new ClassPathResource(fileName,classLoader);
     	List<PMMLResource> resources = null;
     	if (res != null) {
+    		InputStream is = null;
+			try {
+				is = res.getInputStream();
+			} catch (Exception e1) {
+//				System.out.println(e1.getMessage());
+			}
+			if (is == null) {
+				res = ResourceFactory.newFileResource(new File(fileName));
+				try {
+					is = res.getInputStream();
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
     		try {
     			resources = precompile(res.getInputStream(),classLoader,rootKieBaseModel);
     		} catch (Exception e) {
