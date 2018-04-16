@@ -258,7 +258,7 @@ public class KieBuilderImpl
             List<String> pmmlFileNames = getPmmlFileNames(srcMfs);
             
             if (pmmlFileNames != null && !pmmlFileNames.isEmpty()) {
-                buildPMMLPojos(pmmlFileNames,kProject);
+//                buildPMMLPojos(pmmlFileNames,kProject);
             }
             compileJavaClasses( kProject.getClassLoader(), classFilter );
 

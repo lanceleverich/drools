@@ -96,6 +96,14 @@
       <artifactId>assertj-core</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>org.apache.poi</groupId>
+    	<artifactId>poi-ooxml</artifactId>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.poi</groupId>
+    	<artifactId>poi</artifactId>
+    </dependency>
   </dependencies>
 
   <build>

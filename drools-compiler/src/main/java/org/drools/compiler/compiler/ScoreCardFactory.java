@@ -16,6 +16,7 @@
 package org.drools.compiler.compiler;
 
 import java.io.InputStream;
+import java.util.Optional;
 
 import org.kie.api.internal.utils.ServiceRegistry;
 import org.kie.internal.builder.ScoreCardConfiguration;
@@ -24,6 +25,10 @@ public class ScoreCardFactory {
 
     private static class LazyHolder {
         private static final ScoreCardProvider provider = ServiceRegistry.getInstance().get( ScoreCardProvider.class );
+    }
+    
+    public static Optional<String> getGeneratedPMML(InputStream is, ScoreCardConfiguration configuration) {
+    	return getScoreCardProvider().getGeneratedPMML(is, configuration);
     }
 
     public static String loadFromInputStream(InputStream is, ScoreCardConfiguration configuration) {

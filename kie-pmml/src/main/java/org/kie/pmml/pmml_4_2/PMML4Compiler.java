@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import javax.xml.XMLConstants;
@@ -62,10 +63,12 @@ import org.kie.api.builder.model.KieModuleModel;
 import org.kie.api.builder.model.KieSessionModel;
 import org.kie.api.conf.EventProcessingOption;
 import org.kie.api.io.Resource;
+import org.kie.api.io.ResourceConfiguration;
 import org.kie.api.io.ResourceType;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.internal.builder.KnowledgeBuilderResult;
+import org.kie.internal.builder.ScoreCardConfiguration;
 import org.kie.internal.io.ResourceFactory;
 import org.kie.pmml.pmml_4_2.model.Miningmodel;
 import org.kie.pmml.pmml_4_2.model.PMML4ModelType;
@@ -75,6 +78,10 @@ import org.kie.pmml.pmml_4_2.model.PMMLOutputField;
 import org.kie.pmml.pmml_4_2.model.Treemodel;
 import org.kie.pmml.pmml_4_2.model.mining.MiningSegment;
 import org.kie.pmml.pmml_4_2.model.mining.MiningSegmentation;
+import org.kie.scorecards.parser.AbstractScorecardParser;
+import org.kie.scorecards.parser.ScorecardError;
+import org.kie.scorecards.parser.ScorecardParseException;
+import org.kie.scorecards.parser.xls.XLSScorecardParser;
 import org.mvel2.templates.SimpleTemplateRegistry;
 import org.mvel2.templates.TemplateCompiler;
 import org.mvel2.templates.TemplateRegistry;
@@ -483,6 +490,48 @@ public class PMML4Compiler implements PMMLCompiler {
         }
         return theory;
     }
+    
+    public List<PMMLResource> compileFromScoreCard(InputStream stream, ResourceConfiguration configuration, ClassLoader classLoader, KieBaseModel kieBaseModel) {
+    	List<PMMLResource> resources = new ArrayList<>();
+    	if (configuration != null && configuration instanceof ScoreCardConfiguration) {
+    		ScoreCardConfiguration scconf = (ScoreCardConfiguration)configuration;
+    		String inputType = scconf.getInputType();
+    		if (inputType == null || inputType.equalsIgnoreCase(ScoreCardConfiguration.SCORECARD_INPUT_TYPE.EXCEL.toString())) {
+    			String worksheetName = scconf.getWorksheetName();
+    			AbstractScorecardParser parser = new XLSScorecardParser();
+    			try {
+					List<ScorecardError> errors = parser.parseFile(stream, worksheetName != null ? worksheetName:"scorecards");
+					if (errors.isEmpty()) {
+						PMML pmml = parser.getPMMLDocument();
+						Map<String,String> javaClasses = getJavaClasses(pmml);
+				        KieServices services = KieServices.Factory.get();
+				        KieModuleModel module = services.newKieModuleModel();
+				        helper.setResolver(classLoader);
+				        PMML4Unit unit = new PMML4UnitImpl(pmml);
+			            PMML4Model rootModel = unit.getRootModel();
+			            if (rootModel != null) {
+			                helper.setPack(rootModel.getModelPackageName());
+			                KieBaseModel kbm = module.newKieBaseModel(rootModel.getModelId());
+			                kbm.addPackage(helper.getPack())
+			                    .setDefault(true)
+			                    .setEventProcessingMode(EventProcessingOption.CLOUD);
+			                PMMLResource resource = new PMMLResource(helper.getPack());
+			                resource.setKieBaseModel(kbm);
+			                resource.addRules(rootModel.getModelId(), this.compile(pmml, classLoader));
+			                for (Entry<String, String> entry: javaClasses.entrySet()) {
+			                	resource.addPojoDefinition(entry);
+			                }
+			                resources.add(resource);
+			            }
+						
+					}
+				} catch (ScorecardParseException e) {
+					results.add(new PMMLError(e.getMessage()));
+				}
+    		}
+    	}
+    	return resources;
+    }
 
     public Resource[] transform( Resource resource, ClassLoader classLoader ) {
         String theory = null;
@@ -539,10 +588,14 @@ public class PMML4Compiler implements PMMLCompiler {
     
     @Override
     public Map<String,String> getJavaClasses(InputStream stream) {
-        Map<String,String> javaClasses = new HashMap<>();
         PMML pmml = loadModel(PMML, stream);
-        if (pmml != null) {
-            PMML4Unit unit = new PMML4UnitImpl(pmml);
+        return getJavaClasses(loadModel(PMML,stream));
+    }
+    
+    private Map<String,String> getJavaClasses(PMML pmml) {
+    	Map<String,String> javaClasses = new HashMap<>();
+    	if (pmml != null) {
+    		PMML4Unit unit = new PMML4UnitImpl(pmml);
             if (unit != null) {
                 List<PMML4Model> models = unit.getModels();
                 models.forEach(model -> {
@@ -557,8 +610,9 @@ public class PMML4Compiler implements PMMLCompiler {
                     if (outcome != null) javaClasses.put(outcome.getKey(), outcome.getValue());
                 });
             }
-        }
-        return javaClasses;
+    	}
+    	
+    	return javaClasses;
     }
     
     

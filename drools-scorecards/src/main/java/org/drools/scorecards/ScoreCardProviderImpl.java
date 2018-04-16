@@ -16,6 +16,7 @@
 package org.drools.scorecards;
 
 import java.io.InputStream;
+import java.util.Optional;
 
 import org.drools.compiler.compiler.ScoreCardProvider;
 import org.drools.core.util.StringUtils;
@@ -30,6 +31,27 @@ public class ScoreCardProviderImpl
 
         return compileStream( is,
                               configuration );
+    }
+    
+    public Optional<String> getGeneratedPMML( InputStream is, ScoreCardConfiguration configuration) {
+    	ScorecardCompiler scorecardCompiler = new ScorecardCompiler();
+    	if (configuration != null && configuration.IsUsingExternalTypes()) {
+    		scorecardCompiler.setDrlType(ScorecardCompiler.DrlType.EXTERNAL_OBJECT_MODEL);
+    	}
+    	String inputTypeExcel = ScoreCardConfiguration.SCORECARD_INPUT_TYPE.EXCEL.toString();
+    	boolean compileResult = false;
+    	if (configuration == null 
+    			|| configuration.getInputType() == null
+    			|| inputTypeExcel.equalsIgnoreCase(configuration.getInputType()) ) {
+    		if (configuration == null || StringUtils.isEmpty( configuration.getWorksheetName() ) ) {
+    			compileResult = scorecardCompiler.compileFromExcel(is);
+    		} else {
+    			compileResult = scorecardCompiler.compileFromExcel(is, configuration.getWorksheetName());
+    		}
+    	} else if (ScoreCardConfiguration.SCORECARD_INPUT_TYPE.PMML.toString().equalsIgnoreCase(configuration.getInputType())) {
+    		compileResult = scorecardCompiler.compileFromPMML(is);
+    	}
+    	return compileResult ? Optional.of(scorecardCompiler.getPMML()) : Optional.empty();
     }
 
     private String compileStream( InputStream is,

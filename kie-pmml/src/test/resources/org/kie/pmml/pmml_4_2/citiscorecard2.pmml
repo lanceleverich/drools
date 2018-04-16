@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML version="4.2" xsi:schemaLocation="http://www.dmg.org/PMML-4_2 http://www.dmg.org/v4-1/pmml-4-2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="www.dmg.org" description="Citi Retail scorecard">
+    <Timestamp>2010-11-10T08:17:10.8</Timestamp>
+  </Header>
+  <DataDictionary>
+    <DataField name="ADV124" dataType="double" optype="continuous"/>
+    <DataField name="ADV221" dataType="double" optype="continuous"/>
+    <DataField name="balsqrt" dataType="double" optype="continuous"/>
+    <DataField name="CB0_ATTR012" dataType="double" optype="continuous"/>
+    <DataField name="CB0_ATTR061" dataType="double" optype="continuous"/>
+	<DataField name="CB0_ATTR306" dataType="double" optype="continuous"/>
+	<DataField name="payrate" dataType="double" optype="continuous"/>
+	<DataField name="income" dataType="double" optype="continuous"/>
+	<DataField name="overallScore" dataType="double" optype="continuous"/>
+  </DataDictionary>
+  <Scorecard modelName="CitiRetailScorecard" functionName="regression" useReasonCodes="true" reasonCodeAlgorithm="pointsBelow" initialScore="0" baselineMethod="other">
+   	<MiningSchema>
+    	<MiningField name="ADV124" usageType="active" invalidValueTreatment="asMissing"/>
+    	<MiningField name="ADV221" usageType="active" invalidValueTreatment="asMissing"/>
+    	<MiningField name="balsqrt" usageType="active" invalidValueTreatment="asMissing"/>
+    	<MiningField name="CB0_ATTR012" usageType="active" invalidValueTreatment="asMissing"/>
+    	<MiningField name="CB0_ATTR061" usageType="active" invalidValueTreatment="asMissing"/>
+	    <MiningField name="CB0_ATTR306" usageType="active" invalidValueTreatment="asMissing"/>
+		<MiningField name="payrate" usageType="active" invalidValueTreatment="asMissing"/>  
+		<MiningField name="income" usageType="active" invalidValueTreatment="asMissing"/>
+		<MiningField name="overallScore" usageType="predicted"/>  
+	</MiningSchema>
+    	<Output>
+      		<OutputField name="Final Score" feature="predictedValue" dataType="double" optype="continuous"/>
+      		<OutputField name="Reason Code 1" rank="1" feature="reasonCode" dataType="string" optype="categorical"/>
+      		<OutputField name="Reason Code 2" rank="2" feature="reasonCode" dataType="string" optype="categorical"/>
+      		<OutputField name="Reason Code 3" rank="3" feature="reasonCode" dataType="string" optype="categorical"/>
+      		<OutputField name="Reason Code 4" rank="4" feature="reasonCode" dataType="string" optype="categorical"/>
+      		<OutputField name="Reason Code 5" rank="5" feature="reasonCode" dataType="string" optype="categorical"/>
+      		<OutputField name="Reason Code 6" rank="6" feature="reasonCode" dataType="string" optype="categorical"/>
+      		<OutputField name="Reason Code 7" rank="7" feature="reasonCode" dataType="string" optype="categorical"/>
+    	</Output>
+   <Characteristics>
+      <Characteristic name="ADV124Score" reasonCode="61" baselineScore="0">
+        	<Attribute>
+          		<SimplePredicate field="ADV124" operator="isMissing"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>0.9</Constant>
+                		<Constant>0.8567</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="ADV124" operator="equal" value="0.0"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>0.9</Constant>
+                		<Constant>0.8567</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="ADV124" operator="lessThan" value="0.07"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>0.07</Constant>
+                		<Constant>0.8567</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="ADV124" operator="greaterThan" value="0.99"/> 
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>0.99</Constant>
+                		<Constant>0.8567</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        </Attribute>
+        <Attribute>
+          		<CompoundPredicate booleanOperator="and">
+            		<SimplePredicate field="ADV124" operator="greaterOrEqual" value="0.07"/>
+            		<SimplePredicate field="ADV124" operator="lessOrEqual" value="0.99"/>
+          		</CompoundPredicate>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<FieldRef field="income"/>
+                		<Constant>0.8567</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        </Attribute>
+    </Characteristic> 
+     <Characteristic name="ADV221Score" reasonCode="18" baselineScore="0">
+        	<Attribute>
+          		<SimplePredicate field="ADV124" operator="isMissing"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>0.1</Constant>
+                		<Constant>0.953</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="ADV124" operator="equal" value="0"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>0.1</Constant>
+                		<Constant>0.953</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="ADV221" operator="lessThan" value="0.00"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>0.0</Constant>
+                		<Constant>0.953</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="ADV221" operator="greaterThan" value="0.83"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>0.83</Constant>
+                		<Constant>0.953</Constant>
+              		</Apply>
+          		</ComplexPartialScore> 
+        </Attribute>
+        <Attribute>
+          		<CompoundPredicate booleanOperator="and">
+            		<SimplePredicate field="ADV221" operator="greaterOrEqual" value="0.00"/>
+            		<SimplePredicate field="ADV221" operator="lessOrEqual" value="0.83"/>
+          		</CompoundPredicate>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>0.953</Constant>
+                		<FieldRef field="income"/>
+              		</Apply>
+          		</ComplexPartialScore>
+        </Attribute>      	
+      </Characteristic> 
+      <Characteristic name="BalsqrtScore" reasonCode="59" baselineScore="0">
+        	<Attribute>
+          		<SimplePredicate field="Balsqrt" operator="isMissing"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>1.0</Constant>
+                		<Constant>0.0155</Constant>
+              		</Apply>
+          		</ComplexPartialScore> 
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="Balsqrt" operator="equal" value="0.0"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>1.0</Constant>
+                		<Constant>0.0155</Constant>
+              		</Apply>
+          		</ComplexPartialScore> 
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="Balsqrt" operator="lessThan" value="1.0"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>1.0</Constant>
+                		<Constant>0.0155</Constant>
+              		</Apply>
+          		</ComplexPartialScore> 
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="Balsqrt" operator="greaterThan" value="53.0"/> 
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>53.0</Constant>
+                		<Constant>0.0155</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        </Attribute>
+        <Attribute>
+          		<CompoundPredicate booleanOperator="and">
+            		<SimplePredicate field="Balsqrt" operator="greaterOrEqual" value="1.0"/>
+            		 <SimplePredicate field="Balsqrt" operator="lessOrEqual" value="53.0"/>
+          		</CompoundPredicate>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>0.0155</Constant>
+                		<FieldRef field="income"/>
+              		</Apply>
+          		</ComplexPartialScore>
+        </Attribute>
+      </Characteristic>
+      <Characteristic name="CB0_ATTR012Score" reasonCode="58" baselineScore="0">
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR012" operator="isMissing"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>50.0</Constant>
+                		<Constant>-0.008</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR012" operator="equal" value="0.0"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>50.0</Constant>
+                		<Constant>-0.008</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR012" operator="lessThan" value="12.0"/>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>12.0</Constant>
+                		<Constant>-0.008</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR012" operator="greaterThan" value="196.0"/> 
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>196.0</Constant>
+                		<Constant>-0.008</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute >
+          		<CompoundPredicate booleanOperator="and">
+            		<SimplePredicate field="CB0_ATTR012" operator="greaterOrEqual" value="12.0"/>
+            		<SimplePredicate field="CB0_ATTR012" operator="lessOrEqual" value="196.0"/>
+          		</CompoundPredicate>
+          		<ComplexPartialScore>
+          			<Apply function="*">
+                		<Constant>-0.008</Constant>
+                		<FieldRef field="income"/>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+      </Characteristic>
+      <Characteristic name="CB0_ATTR061Score" reasonCode="101" baselineScore="0">
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR061" operator="isMissing"/>
+          		<ComplexPartialScore>
+          		<Apply function="Math.sqrt">
+          			<Apply function="*">
+                		<Constant>300.0</Constant>
+                		<Constant>0.0077</Constant>
+              		</Apply>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR061" operator="equal" value="0.0"/>
+          		<ComplexPartialScore>
+          		<Apply function="Math.sqrt">
+          			<Apply function="*">
+                		<Constant>300.0</Constant>
+                		<Constant>0.0077</Constant>
+              		</Apply>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR061" operator="lessThan" value="0.00"/>
+          		<ComplexPartialScore>
+          		<Apply function="Math.sqrt">
+          			<Apply function="*">
+                		<Constant>0.0</Constant>
+                		<Constant>0.0077</Constant>
+              		</Apply>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR061" operator="greaterThan" value="473.0"/> 
+          		<ComplexPartialScore>
+          		<Apply function="Math.sqrt">
+          			<Apply function="*">
+                		<Constant>473.0</Constant>
+                		<Constant>0.0077</Constant>
+              		</Apply>
+              		</Apply>
+          		</ComplexPartialScore>
+        </Attribute>
+        <Attribute>
+          		<CompoundPredicate booleanOperator="and">
+            		<SimplePredicate field="CB0_ATTR061" operator="greaterOrEqual" value="0.00"/>
+            		<SimplePredicate field="CB0_ATTR061" operator="lessOrEqual" value="473.0"/>
+          		</CompoundPredicate>
+          		<ComplexPartialScore>
+          		<Apply function="Math.sqrt">
+          			<Apply function="*">
+          				<Constant>0.0077</Constant>
+                		<FieldRef field="income"/>
+              		</Apply>
+              		</Apply>
+          		</ComplexPartialScore>
+        </Attribute>
+      </Characteristic> 
+      <Characteristic name="CB0_ATTR306Score" reasonCode="83" baselineScore="0">
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR306" operator="isMissing"/>
+          		<ComplexPartialScore>	
+          			<Apply function="*">
+          				<Constant>5.0</Constant>
+                		<Constant>0.0883</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR306" operator="equal" value="0.0"/>
+          		<ComplexPartialScore>	
+          			<Apply function="*">
+          				<Constant>5.0</Constant>
+                		<Constant>0.0883</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR306" operator="lessThan" value="0.00"/>
+          		<ComplexPartialScore>	
+          			<Apply function="*">
+          				<Constant>0.0</Constant>
+                		<Constant>0.0883</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="CB0_ATTR306" operator="greaterThan" value="10.0"/> 
+          		<ComplexPartialScore>	
+          			<Apply function="*">
+          				<Constant>10.0</Constant>
+                		<Constant>0.0883</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        </Attribute>
+        <Attribute>
+          		<CompoundPredicate booleanOperator="and">
+            		<SimplePredicate field="CB0_ATTR306" operator="greaterOrEqual" value="0.00"/>
+            		<SimplePredicate field="CB0_ATTR306" operator="lessOrEqual" value="10.0"/>
+          		</CompoundPredicate>
+          		<ComplexPartialScore>	
+          			<Apply function="*">
+                		<Constant>0.0883</Constant>
+                		<FieldRef field="income"/>
+              		</Apply>
+          		</ComplexPartialScore>
+        </Attribute>
+      </Characteristic>
+      <Characteristic name="payrateScore" reasonCode="94" baselineScore="0">
+        	<Attribute>
+          		<SimplePredicate field="payrate" operator="isMissing"/>
+          		<ComplexPartialScore>	
+          			<Apply function="*">
+          				<Constant>0.1</Constant>
+                		<Constant>-1.1424</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="payrate" operator="equal" value="0.0"/>
+          		<ComplexPartialScore>	
+          			<Apply function="*">
+          				<Constant>0.1</Constant>
+                		<Constant>-1.1424</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="payrate" operator="lessThan" value="0.00"/>
+          		<ComplexPartialScore>	
+          			<Apply function="*">
+          				<Constant>0.0</Constant>
+                		<Constant>-1.1424</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        	</Attribute>
+        	<Attribute>
+          		<SimplePredicate field="payrate" operator="greaterThan" value="0.55"/> 
+          		<ComplexPartialScore>	
+          			<Apply function="*">
+          				<Constant>0.55</Constant>
+                		<Constant>-1.1424</Constant>
+              		</Apply>
+          		</ComplexPartialScore>
+        </Attribute>
+        <Attribute >
+          		<CompoundPredicate booleanOperator="and">
+            		<SimplePredicate field="payrate" operator="greaterOrEqual" value="0.00"/>
+            		<SimplePredicate field="payrate" operator="lessOrEqual" value="0.55"/>
+          		</CompoundPredicate>
+          		<ComplexPartialScore>	
+          			<Apply function="*">
+                		<Constant>-1.1424</Constant>
+                		<FieldRef field="income"/>
+              		</Apply>
+          		</ComplexPartialScore>
+        </Attribute>
+      </Characteristic>  
+    </Characteristics>
+  </Scorecard>
+</PMML>
