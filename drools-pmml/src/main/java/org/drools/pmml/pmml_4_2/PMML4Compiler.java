@@ -33,6 +33,7 @@ import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.builder.model.KieBaseModel;
 import org.kie.api.io.Resource;
+import org.kie.api.io.ResourceConfiguration;
 import org.kie.api.io.ResourceType;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -58,6 +59,7 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -618,6 +620,13 @@ public class PMML4Compiler implements PMMLCompiler {
     public Map<String,String> getJavaClasses(InputStream stream) {
        return null;
     }
+
+
+	@Override
+	public String parseScoreCard(Resource resource, ResourceConfiguration configuration) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }

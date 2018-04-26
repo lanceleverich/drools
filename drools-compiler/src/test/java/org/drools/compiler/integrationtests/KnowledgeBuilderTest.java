@@ -44,6 +44,7 @@ import org.kie.api.internal.utils.ServiceDiscoveryImpl;
 import org.kie.api.internal.utils.ServiceRegistry;
 import org.kie.api.internal.utils.ServiceRegistryImpl;
 import org.kie.api.io.Resource;
+import org.kie.api.io.ResourceConfiguration;
 import org.kie.api.io.ResourceType;
 import org.kie.api.runtime.KieSession;
 import org.kie.internal.builder.KnowledgeBuilder;
@@ -465,6 +466,12 @@ public class KnowledgeBuilderTest {
                                                           public String compile(InputStream stream, ClassLoader cl) {
                                                               return "rule R2 when then end";
                                                           }
+                                                          
+                                                          @Override
+                                                          public String parseScoreCard( Resource resource, ResourceConfiguration configuration ) {
+                                                             return null;
+                                                          }
+
 
                                                           @Override
                                                           public List<KnowledgeBuilderResult> getResults() {
@@ -481,30 +488,30 @@ public class KnowledgeBuilderTest {
                                                           }
                                                           
                                                           public String getCompilerVersion() {
-                                                        	  return "KnowledgeBuilderTest";
+                                                              return "KnowledgeBuilderTest";
                                                           }
 
-														@Override
-														public List<PMMLResource> precompile(InputStream stream,
-																ClassLoader classLoader, KieBaseModel rootModel) {
-															return Collections.emptyList();
-														}
+                                                        @Override
+                                                        public List<PMMLResource> precompile(InputStream stream,
+                                                                ClassLoader classLoader, KieBaseModel rootModel) {
+                                                            return Collections.emptyList();
+                                                        }
 
-														@Override
-														public List<PMMLResource> precompile(String fileName,
-																ClassLoader classLoader, KieBaseModel rootModel) {
-															return Collections.emptyList();
-														}
+                                                        @Override
+                                                        public List<PMMLResource> precompile(String fileName,
+                                                                ClassLoader classLoader, KieBaseModel rootModel) {
+                                                            return Collections.emptyList();
+                                                        }
 
-														@Override
-														public Map<String, String> getJavaClasses(InputStream stream) {
-															return Collections.emptyMap();
-														}
+                                                        @Override
+                                                        public Map<String, String> getJavaClasses(InputStream stream) {
+                                                            return Collections.emptyMap();
+                                                        }
 
-														@Override
-														public Map<String, String> getJavaClasses(String fileName) {
-															return Collections.emptyMap();
-														}
+                                                        @Override
+                                                        public Map<String, String> getJavaClasses(String fileName) {
+                                                            return Collections.emptyMap();
+                                                        }
                                                       } );
 
         serviceRegistry.reload();

@@ -22,6 +22,7 @@ import java.util.Map;
 
 import org.kie.api.Service;
 import org.kie.api.builder.model.KieBaseModel;
+import org.kie.api.io.Resource;
 import org.kie.api.io.ResourceConfiguration;
 import org.kie.internal.builder.KnowledgeBuilderResult;
 
@@ -37,12 +38,12 @@ public interface PMMLCompiler extends Service {
     
     List<PMMLResource> precompile( String fileName, ClassLoader classLoader, KieBaseModel rootModel);
     
-    List<PMMLResource> compileFromScoreCard( InputStream stream, ResourceConfiguration configuration, ClassLoader classLoader, KieBaseModel rootModel );
-
     List<KnowledgeBuilderResult> getResults();
     
     String getCompilerVersion();
-    
+
+    public String parseScoreCard(Resource resource, ResourceConfiguration configuration);
+
 
     void clearResults();
 }

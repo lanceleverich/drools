@@ -59,8 +59,8 @@
     <module>drools-templates</module>
     <module>drools-decisiontables</module>
     <module>drools-examples</module>
-    <module>drools-pmml</module>
-    <module>drools-scorecards</module>
+    <!--module>drools-pmml</module>
+    <module>drools-scorecards</module-->
     <module>kie-ci</module>
     <module>kie-ci-osgi</module>
     <module>kie-dmn</module>
@@ -70,7 +70,6 @@
     <module>drools-workbench-models</module>
     <module>drools-model</module>
     <module>drools-test-coverage</module>
-    <module>kie-scorecards</module>
   </modules>
 
   <dependencyManagement>
