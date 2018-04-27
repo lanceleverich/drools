@@ -622,11 +622,4 @@ public class PMML4Compiler implements PMMLCompiler {
     }
 
 
-	@Override
-	public String parseScoreCard(Resource resource, ResourceConfiguration configuration) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 }

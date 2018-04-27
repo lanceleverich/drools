@@ -81,10 +81,6 @@ import org.kie.pmml.pmml_4_2.model.PMMLOutputField;
 import org.kie.pmml.pmml_4_2.model.Treemodel;
 import org.kie.pmml.pmml_4_2.model.mining.MiningSegment;
 import org.kie.pmml.pmml_4_2.model.mining.MiningSegmentation;
-import org.kie.scorecards.parser.AbstractScorecardParser;
-import org.kie.scorecards.parser.ScorecardError;
-import org.kie.scorecards.parser.ScorecardParseException;
-import org.kie.scorecards.parser.xls.XLSScorecardParser;
 import org.mvel2.templates.SimpleTemplateRegistry;
 import org.mvel2.templates.TemplateCompiler;
 import org.mvel2.templates.TemplateRegistry;
@@ -518,30 +514,6 @@ public class PMML4Compiler implements PMMLCompiler {
             byteArrayResource.setSourcePath( "generated-sources/" + helper.getContext() + ".pmml" );
         }
         return byteArrayResource;
-    }
-
-    @Override
-    public String parseScoreCard(Resource resource, ResourceConfiguration configuration) {
-        PMML pmml = null;
-        ScoreCardConfiguration scc = configuration instanceof ScoreCardConfiguration ? (ScoreCardConfiguration)configuration : null;
-        String worksheetName = (scc != null && !StringUtils.isEmpty(scc.getWorksheetName())) ? scc.getWorksheetName() : "scorecards";
-        try {
-            AbstractScorecardParser parser = new XLSScorecardParser();
-            List<ScorecardError> errors = parser.parseFile(resource.getInputStream(), worksheetName);
-            if (errors.isEmpty()) {
-                pmml = parser.getPMMLDocument();
-            }
-        } catch (IOException iox) {
-            results.add(new PMMLError(iox.getMessage()));
-        } catch (ScorecardParseException spe) {
-            results.add(new PMMLError(spe.getMessage()));
-        }
-        if (pmml != null) {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            dumpModel(pmml, baos);
-            return new String(baos.toByteArray());
-        }
-        return null;
     }
 
     private InputStream getInputStreamByFileName(String fileName) {

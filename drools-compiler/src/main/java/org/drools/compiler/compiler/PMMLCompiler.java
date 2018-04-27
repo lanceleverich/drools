@@ -42,8 +42,6 @@ public interface PMMLCompiler extends Service {
     
     String getCompilerVersion();
 
-    public String parseScoreCard(Resource resource, ResourceConfiguration configuration);
-
 
     void clearResults();
 }

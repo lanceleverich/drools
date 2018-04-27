@@ -512,32 +512,7 @@ public class KnowledgeBuilderImpl implements KnowledgeBuilder {
                                         ResourceConfiguration configuration) throws DroolsParserException,
             IOException {
         this.resource = resource;
-        PMMLCompiler compiler = getPMMLCompiler();
-        String pmmlFromScoreCard = compiler.parseScoreCard(resource, configuration);
-        if (pmmlFromScoreCard != null && !pmmlFromScoreCard.trim().isEmpty()) {
-            File dumpDir = this.configuration.getDumpDir();
-            if (dumpDir != null) {
-                try {
-                    String dirName = dumpDir.getCanonicalPath().endsWith("/") ? dumpDir.getCanonicalPath() : dumpDir.getCanonicalPath() + "/";
-                    String outputPath = dirName + "scorecard_generated.pmml";
-                    try (FileOutputStream fos = new FileOutputStream(outputPath)) {
-                        fos.write(pmmlFromScoreCard.getBytes());
-                    } catch (IOException iox) {
-                        iox.printStackTrace();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            Resource xformed = ResourceFactory.newByteArrayResource(pmmlFromScoreCard.getBytes());
-            try {
-                addPackageFromPMML(xformed, ResourceType.PMML, null);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-        }
+        addPackage(scoreCardToPackageDescr(resource, configuration));
         this.resource = null;
     }
 
@@ -892,7 +867,7 @@ public class KnowledgeBuilderImpl implements KnowledgeBuilder {
             throw new RuntimeException("Unknown resource type: " + type);
         }
     }
-/*
+
     public void addPackageFromPMML(Resource resource,
             ResourceType type,
             ResourceConfiguration configuration) throws Exception {
@@ -903,7 +878,7 @@ public class KnowledgeBuilderImpl implements KnowledgeBuilder {
             addPackageFromDroolsPMML(compiler,resource,type,configuration);
         }
     }
-*/
+
     private void addPackageFromDroolsPMML(PMMLCompiler compiler, Resource resource, 
                         ResourceType type, ResourceConfiguration configuration) throws Exception {
         if (compiler != null) {
@@ -935,10 +910,9 @@ public class KnowledgeBuilderImpl implements KnowledgeBuilder {
         return generatedDrlToPackageDescr(resource, theory);
     }
 
-    public void addPackageFromPMML(Resource resource,
+    public void addPackageFromKiePMML(PMMLCompiler compiler, Resource resource,
                                    ResourceType type,
                                    ResourceConfiguration configuration) throws Exception {
-    	PMMLCompiler compiler = getPMMLCompiler();
         if (compiler != null) {
             if (compiler.getResults().isEmpty()) {
                 this.resource = resource;

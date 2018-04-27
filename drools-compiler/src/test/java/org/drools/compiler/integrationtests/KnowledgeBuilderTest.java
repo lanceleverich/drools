@@ -468,12 +468,6 @@ public class KnowledgeBuilderTest {
                                                           }
                                                           
                                                           @Override
-                                                          public String parseScoreCard( Resource resource, ResourceConfiguration configuration ) {
-                                                             return null;
-                                                          }
-
-
-                                                          @Override
                                                           public List<KnowledgeBuilderResult> getResults() {
                                                               return Collections.emptyList();
                                                           }
