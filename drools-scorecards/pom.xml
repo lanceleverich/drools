@@ -55,6 +55,11 @@
       <artifactId>slf4j-api</artifactId>
     </dependency>
 
+    <dependency>
+    	<groupId>org.kie</groupId>
+    	<artifactId>kie-api</artifactId>
+    	<scope>provided</scope>
+    </dependency>
   </dependencies>
 
 </project>
