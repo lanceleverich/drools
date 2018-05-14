@@ -517,7 +517,35 @@ public class KnowledgeBuilderImpl implements KnowledgeBuilder {
                                         ResourceConfiguration configuration) throws DroolsParserException,
             IOException {
         this.resource = resource;
-        addPackage(scoreCardToPackageDescr(resource, configuration));
+        ScoreCardConfiguration scardConfiguration = configuration instanceof ScoreCardConfiguration ?
+                (ScoreCardConfiguration) configuration :
+                null;
+        String pmmlString = ScoreCardFactory.getPMMLStringFromInputStream(resource.getInputStream(), scardConfiguration);
+        if (pmmlString != null) {
+            File dumpDir = this.configuration.getDumpDir();
+            if (dumpDir != null) {
+                try {
+                    String dirName = dumpDir.getCanonicalPath().endsWith("/") ? dumpDir.getCanonicalPath() : dumpDir.getCanonicalPath() + "/";
+                    String outputPath = dirName + "scorecard_generated.pmml";
+                    try (FileOutputStream fos = new FileOutputStream(outputPath)) {
+                        fos.write(pmmlString.getBytes());
+                    } catch (IOException iox) {
+                        iox.printStackTrace();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        	Resource res = ResourceFactory.newByteArrayResource(pmmlString.getBytes());//.setResourceType(ResourceType.PMML)
+//        			.setSourcePath("src/main/resource/"+"name.pmml");
+        	try {
+				addPackageFromKiePMML(getPMMLCompiler(),res,ResourceType.PMML,null);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+//        addPackage(scoreCardToPackageDescr(resource, configuration));
         this.resource = null;
     }
 

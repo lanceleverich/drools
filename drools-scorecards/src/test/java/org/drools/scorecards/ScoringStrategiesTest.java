@@ -18,10 +18,14 @@ package org.drools.scorecards;
 import org.dmg.pmml.pmml_4_2.descr.Extension;
 import org.dmg.pmml.pmml_4_2.descr.PMML;
 import org.dmg.pmml.pmml_4_2.descr.Scorecard;
+import org.kie.pmml.pmml_4_2.PMML4ExecutionHelper;
+import org.kie.pmml.pmml_4_2.PMML4ExecutionHelper.PMML4ExecutionHelperFactory;
 import org.kie.pmml.pmml_4_2.extensions.AggregationStrategy;
+import org.drools.core.builder.conf.impl.ScoreCardConfigurationImpl;
 import org.drools.scorecards.pmml.ScorecardPMMLExtensionNames;
 import org.drools.scorecards.pmml.ScorecardPMMLUtils;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
@@ -30,14 +34,20 @@ import org.kie.api.builder.KieFileSystem;
 import org.kie.api.builder.Message;
 import org.kie.api.builder.Results;
 import org.kie.api.definition.type.FactType;
+import org.kie.api.io.Resource;
 import org.kie.api.io.ResourceType;
+import org.kie.api.pmml.PMML4Result;
+import org.kie.api.pmml.PMMLRequestData;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.StatelessKieSession;
+import org.kie.internal.builder.ScoreCardConfiguration;
+import org.kie.internal.io.ResourceFactory;
 
 import java.io.InputStream;
 
 import static org.junit.Assert.*;
 import static org.drools.scorecards.ScorecardCompiler.DrlType.INTERNAL_DECLARED_TYPES;
+
 
 public class ScoringStrategiesTest {
 
@@ -53,8 +63,6 @@ public class ScoringStrategiesTest {
         if (scorecardCompiler.compileFromExcel(PMMLDocumentTest.class.getResourceAsStream("/scoremodel_scoring_strategies.xls")) ) {
             pmmlDocument = scorecardCompiler.getPMMLDocument();
             assertNotNull(pmmlDocument);
-            String drl = scorecardCompiler.getDRL();
-            assertNotNull(drl);
             for (Object serializable : pmmlDocument.getAssociationModelsAndBaselineModelsAndClusteringModels()){
                 if (serializable instanceof Scorecard){
                     Scorecard scorecard = (Scorecard)serializable;
@@ -208,6 +216,20 @@ public class ScoringStrategiesTest {
     /* Internal functions */
     private double executeAndFetchScore(String sheetName) throws Exception {
 
+    	Resource resource = ResourceFactory.newClassPathResource("scoremodel_scoring_strategies.xls").setResourceType(ResourceType.SCARD);
+    	ScoreCardConfiguration resConf = new ScoreCardConfigurationImpl();
+    	resConf.setWorksheetName(sheetName);
+    	resource.setConfiguration(resConf);
+    	PMML4ExecutionHelper helper = PMML4ExecutionHelperFactory.getExecutionHelper("SampleScore", resource, null);
+    	helper.addPossiblePackageName("org.drools.scorecards.example");
+    	PMMLRequestData request = new PMMLRequestData("123",helper.getModelName());
+    	request.addRequestParam("age",10.0);
+    	request.addRequestParam("validLicense", false);
+    	
+    	PMML4Result resultHolder = helper.submitRequest(request);
+    	assertEquals("OK",resultHolder.getResultCode());
+    	return resultHolder.getResultValue("Scorecard__calculatedScore", "value", Double.class).orElse(null);
+/*    	
         ScorecardCompiler scorecardCompiler = new ScorecardCompiler(INTERNAL_DECLARED_TYPES);
         InputStream inputStream = PMMLDocumentTest.class.getResourceAsStream( "/scoremodel_scoring_strategies.xls" );
         boolean compileResult = scorecardCompiler.compileFromExcel(inputStream, sheetName);
@@ -241,6 +263,7 @@ public class ScoringStrategiesTest {
         scorecardType.set(scorecard, "age", 10);
         session.execute(scorecard);
         return (Double) scorecardType.get( scorecard, "scorecard__calculatedScore" );
+*/        
     }
 
 }

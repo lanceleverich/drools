@@ -118,33 +118,9 @@ public class ScorecardProviderTest {
     	int executions = executor.run(ruleUnitClass);
     	assertTrue(executions > 0);
     	
-    	System.out.println(resultHolder);
-    	Double calculatedScore = resultHolder.getResultValue("Scorecard_calculatedScore", "value", Double.class).orElse(null);
+    	Double calculatedScore = resultHolder.getResultValue("CalculatedScore", "value", Double.class).orElse(null);
     	assertEquals(56.0,calculatedScore,1e-6);
         
-//        kbuilder.add( ResourceFactory.newUrlResource(ScorecardProviderTest.class.getResource("/scoremodel_c.xls")),
-//            ResourceType.SCARD,
-//            scconf );
-//        assertFalse( kbuilder.hasErrors() );
-//        InternalKnowledgeBase kbase = KnowledgeBaseFactory.newKnowledgeBase();
-//        assertNotNull(kbase);
-//        kbase.addPackages( kbuilder.getKnowledgePackages() );
-
-        //NEW WORKING MEMORY
-//        KieSession session = kbase.newKieSession();
-//        FactType scorecardType = kbase.getFactType( "org.drools.scorecards.example","SampleScore" );
-//        assertNotNull(scorecardType);
-//
-//        Object scorecard =  scorecardType.newInstance();
-//        assertNotNull(scorecard);
-//
-//        scorecardType.set(scorecard, "age", 10);
-//        session.insert( scorecard );
-//        session.fireAllRules();
-//        session.dispose();
-        //occupation = 5, age = 25, validLicence -1
-//        assertEquals( 29.0, scorecardType.get( scorecard, "scorecard__calculatedScore" ) );
-
     }
 
     @Test
