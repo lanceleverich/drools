@@ -229,41 +229,6 @@ public class ScoringStrategiesTest {
     	PMML4Result resultHolder = helper.submitRequest(request);
     	assertEquals("OK",resultHolder.getResultCode());
     	return resultHolder.getResultValue("Scorecard__calculatedScore", "value", Double.class).orElse(null);
-/*    	
-        ScorecardCompiler scorecardCompiler = new ScorecardCompiler(INTERNAL_DECLARED_TYPES);
-        InputStream inputStream = PMMLDocumentTest.class.getResourceAsStream( "/scoremodel_scoring_strategies.xls" );
-        boolean compileResult = scorecardCompiler.compileFromExcel(inputStream, sheetName);
-        if (!compileResult) {
-            for(ScorecardError error : scorecardCompiler.getScorecardParseErrors()){
-                System.err.println("Scorecard Compiler Error :"+error.getErrorLocation()+"->"+error.getErrorMessage());
-            }
-            return -999999;
-        }
-        String drl = scorecardCompiler.getDRL();
-
-        KieServices ks = KieServices.Factory.get();
-        KieFileSystem kfs = ks.newKieFileSystem();
-        kfs.write( ks.getResources().newByteArrayResource( drl.getBytes() )
-                           .setSourcePath( "scoremodel_scoring_strategies.drl" )
-                           .setResourceType( ResourceType.DRL ) );
-        KieBuilder kieBuilder = ks.newKieBuilder( kfs );
-        Results res = kieBuilder.buildAll().getResults();
-        if ( res.hasMessages( Message.Level.ERROR ) ) {
-            System.out.println( res.getMessages() );
-        }
-        assertEquals( 0, res.getMessages( Message.Level.ERROR ).size() );
-
-        KieContainer kieContainer = ks.newKieContainer( kieBuilder.getKieModule().getReleaseId() );
-
-        KieBase kbase = kieContainer.getKieBase();
-        StatelessKieSession session = kbase.newStatelessKieSession();
-
-        FactType scorecardType = kbase.getFactType( "org.drools.scorecards.example","SampleScore" );
-        Object scorecard = scorecardType.newInstance();
-        scorecardType.set(scorecard, "age", 10);
-        session.execute(scorecard);
-        return (Double) scorecardType.get( scorecard, "scorecard__calculatedScore" );
-*/        
     }
 
 }

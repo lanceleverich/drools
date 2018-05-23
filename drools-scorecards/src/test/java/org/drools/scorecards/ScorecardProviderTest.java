@@ -25,11 +25,13 @@ import org.drools.core.impl.InternalKnowledgeBase;
 import org.drools.core.impl.KnowledgeBaseFactory;
 import org.drools.core.ruleunit.RuleUnitDescr;
 import org.drools.core.ruleunit.RuleUnitRegistry;
+import org.drools.scorecards.example.Applicant;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.api.KieBase;
 import org.kie.api.definition.type.FactType;
+import org.kie.api.io.Resource;
 import org.kie.api.io.ResourceType;
 import org.kie.api.pmml.PMML4Data;
 import org.kie.api.pmml.PMML4Result;
@@ -43,6 +45,9 @@ import org.kie.internal.builder.KnowledgeBuilderFactory;
 import org.kie.internal.builder.ScoreCardConfiguration;
 import org.kie.internal.io.ResourceFactory;
 import org.kie.internal.runtime.StatefulKnowledgeSession;
+import org.kie.internal.utils.KieHelper;
+import org.kie.pmml.pmml_4_2.PMML4ExecutionHelper;
+import org.kie.pmml.pmml_4_2.PMML4ExecutionHelper.PMML4ExecutionHelperFactory;
 import org.kie.pmml.pmml_4_2.model.PMML4UnitImpl;
 
 import java.io.InputStream;
@@ -124,21 +129,45 @@ public class ScorecardProviderTest {
     }
 
     @Test
-    @Ignore
     public void testDrlGenerationWithExternalTypes() throws Exception {
 
-        InputStream is = ScorecardProviderTest.class.getResourceAsStream("/scoremodel_externalmodel.xls");
-        assertNotNull(is);
-
+    	Resource resource = ResourceFactory.newClassPathResource("scoremodel_externalmodel.xls");
         ScoreCardConfiguration scconf = KnowledgeBuilderFactory.newScoreCardConfiguration();
         scconf.setWorksheetName( "scorecards" );
         scconf.setUsingExternalTypes(true);
-        String drl = scoreCardProvider.loadFromInputStream(is, scconf);
-        assertNotNull(drl);
-        assertTrue(drl.length() > 0);
-
-        assertTrue(drl.contains("org.drools.scorecards.example.Applicant"));
-
+        resource.setConfiguration(scconf);
+        resource.setResourceType(ResourceType.SCARD);
+        KieBase kbase = new KieHelper().addResource(resource, ResourceType.SCARD).build();
+        assertNotNull(kbase);
+        RuleUnitExecutor executor = RuleUnitExecutor.create().bind(kbase);
+        
+        DataSource<PMMLRequestData> data = executor.newDataSource("request");
+        DataSource<PMML4Result> resultData = executor.newDataSource("results");
+        DataSource<PMML4Data> pmmlData = executor.newDataSource("pmmlData");
+        DataSource<Applicant> applicantData = executor.newDataSource("externalBeanApplicant");
+        
+        PMMLRequestData request = new PMMLRequestData("123","Sample Score");
+        Applicant applicant = new Applicant();
+        applicant.setAge(33.0);
+        applicant.setOccupation("PROGRAMMER");
+        applicant.setResidenceState("AP");
+        applicant.setValidLicense(true);
+        
+        PMML4Result resultHolder = new PMML4Result("123");
+        List<String> possiblePackages = calculatePossiblePackageNames("Sample Score", "org.drools.scorecards.example");
+        Class<? extends RuleUnit> ruleUnitClass = getStartingRuleUnit("RuleUnitIndicator",(InternalKnowledgeBase)kbase,possiblePackages);
+        assertNotNull(ruleUnitClass);
+        
+        resultData.insert(resultHolder);
+        data.insert(request);
+        applicantData.insert(applicant);
+        
+        int count = executor.run(ruleUnitClass);
+        assertTrue(count > 0);
+        
+    	Double calculatedScore = resultHolder.getResultValue("Scorecard__calculatedScore", "value", Double.class).orElse(null);
+    	assertEquals(36.0,calculatedScore,1e-6);
+        
     }
     
     protected Class<? extends RuleUnit> getStartingRuleUnit(String startingRule, InternalKnowledgeBase ikb, List<String> possiblePackages) {
