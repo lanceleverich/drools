@@ -22,7 +22,7 @@ salience 100
 when
    $rd: PMMLRequestData( correlationId != null, modelName != null ) from request
    not ( ParameterInfo( name == "@{extBeanRef.modelFieldName}" ) from $rd.mappedRequestParams.values() ) 
-   @{extBeanRef.beanName}( $value: @{extBeanRef.modelFieldName} != null ) from externalBean@{extBeanRef.beanName}
+   @{extBeanRef.qualifiedBeanName}( $value: @{extBeanRef.modelFieldName} != null ) from externalBean@{extBeanRef.beanName}
 then
    $rd.addRequestParam("@{extBeanRef.modelFieldName}",$value);
    update($rd);
