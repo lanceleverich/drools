@@ -15,6 +15,7 @@
 
 package org.drools.workbench.models.guided.scorecard.backend.test2;
 
+import static org.drools.core.command.runtime.pmml.PmmlConstants.DEFAULT_ROOT_PACKAGE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -245,7 +246,7 @@ public class GuidedScoreCardIntegrationJavaClassesAddedToKieFileSystemTest {
                 packageNames.add(knownPkgName + "." + javaModelId);
             }
         }
-        String basePkgName = PMML4UnitImpl.DEFAULT_ROOT_PACKAGE + "." + javaModelId;
+        String basePkgName = DEFAULT_ROOT_PACKAGE + "." + javaModelId;
         packageNames.add(basePkgName);
         return packageNames;
     }

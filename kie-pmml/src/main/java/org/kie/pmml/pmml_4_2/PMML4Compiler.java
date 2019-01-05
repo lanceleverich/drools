@@ -16,6 +16,8 @@
 
 package org.kie.pmml.pmml_4_2;
 
+import static org.drools.core.command.runtime.pmml.PmmlConstants.DEFAULT_ROOT_PACKAGE;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,6 +39,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
@@ -80,8 +85,8 @@ import org.xml.sax.SAXException;
 
 public class PMML4Compiler {
 
-    public static final String PMML_NAMESPACE = "org.dmg.pmml.pmml_4_2";
-    public static final String PMML_DROOLS = "org.kie.pmml.pmml_4_2";
+    public static final String PMML_NAMESPACE = DEFAULT_ROOT_PACKAGE;
+    public static final String PMML_DROOLS = DEFAULT_ROOT_PACKAGE;
     public static final String PMML = PMML_NAMESPACE + ".descr";
     public static final String SCHEMA_PATH = "xsd/org/dmg/pmml/pmml_4_2/pmml-4-2.xsd";
     public static final String BASE_PACK = PMML_DROOLS.replace('.', '/');
@@ -751,10 +756,16 @@ public class PMML4Compiler {
             }
             final JAXBContext jc;
             final ClassLoader ccl = Thread.currentThread().getContextClassLoader();
+            XMLStreamReader reader = null;
             try {
                 Thread.currentThread().setContextClassLoader(PMML4Compiler.class.getClassLoader());
-                jc = JAXBContext.newInstance(model, PMML4Compiler.class.getClassLoader());
-            } finally {
+                Class c = PMML4Compiler.class.getClassLoader().loadClass("org.dmg.pmml.pmml_4_2.descr.PMML");
+                jc = JAXBContext.newInstance(c);
+                XMLInputFactory xif = XMLInputFactory.newFactory();
+                xif.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
+                xif.setProperty(XMLInputFactory.SUPPORT_DTD, true);
+                reader = xif.createXMLStreamReader(source);
+			} finally {
                 Thread.currentThread().setContextClassLoader(ccl);
             }
             Unmarshaller unmarshaller = jc.createUnmarshaller();
@@ -762,7 +773,19 @@ public class PMML4Compiler {
                 unmarshaller.setSchema(schema);
             }
 
-            return (PMML) unmarshaller.unmarshal(source);
+            if (reader != null) {
+                return (PMML) unmarshaller.unmarshal(reader);
+            } else {
+            	this.results.add(new PMMLError("Unknown error in PMML"));
+            	return null;
+            }
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+        } catch (XMLStreamException e) {
+			this.results.add(new PMMLError(e.toString()));
+			return null;
         } catch (JAXBException e) {
             this.results.add(new PMMLError(e.toString()));
             return null;
