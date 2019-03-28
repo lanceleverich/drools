@@ -2,11 +2,14 @@ package org.kie.pmml.pmml_4_2.compiler;
 
 import org.dmg.pmml.pmml_4_2.descr.DATATYPE;
 import org.kie.api.definition.type.Key;
+import org.kie.api.definition.type.Position;
 
 public class TypeOfField {
 
     @Key
+    @Position(0)
     private String name;
+    @Position(1)
     private DATATYPE dataType;
 
     public TypeOfField(String name, DATATYPE dataType) {
