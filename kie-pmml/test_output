@@ -1,0 +1,537 @@
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.kie.pmml.pmml_4_2.predictive.models.ScorecardTest
+09:07:44.115 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Loading kie.conf from  file:/home/lleveric/projects/drools/kie-pmml/target/test-classes/META-INF/kie.conf in classloader sun.misc.Launcher$AppClassLoader@3d4eac69
+09:07:44.284 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.kie.pmml.pmml_4_2.PMML4Compiler
+
+09:07:44.286 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Loading kie.conf from  file:/home/lleveric/projects/drools/kie-pmml/target/classes/META-INF/kie.conf in classloader sun.misc.Launcher$AppClassLoader@3d4eac69
+09:07:44.345 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service +org.kie.pmml.assembler.PMMLAssemblerService
+
+09:07:44.345 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Loading kie.conf from  jar:file:/home/lleveric/.m2/repository/org/drools/drools-compiler/7.30.0-SNAPSHOT/drools-compiler-7.30.0-SNAPSHOT.jar!/META-INF/kie.conf in classloader sun.misc.Launcher$AppClassLoader@3d4eac69
+09:07:44.351 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.compiler.kie.builder.impl.KieServicesImpl
+
+09:07:44.354 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.compiler.builder.impl.KnowledgeBuilderFactoryServiceImpl
+
+09:07:44.354 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Loading kie.conf from  jar:file:/home/lleveric/.m2/repository/org/drools/drools-core/7.30.0-SNAPSHOT/drools-core-7.30.0-SNAPSHOT.jar!/META-INF/kie.conf in classloader sun.misc.Launcher$AppClassLoader@3d4eac69
+09:07:44.355 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.core.io.impl.ResourceFactoryServiceImpl
+
+09:07:44.356 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.core.marshalling.impl.MarshallerProviderImpl
+
+09:07:44.357 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.core.concurrent.ExecutorProviderImpl
+
+09:07:44.357 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Loading kie.conf from  jar:file:/home/lleveric/.m2/repository/org/kie/kie-internal/7.30.0-SNAPSHOT/kie-internal-7.30.0-SNAPSHOT.jar!/META-INF/kie.conf in classloader sun.misc.Launcher$AppClassLoader@3d4eac69
+09:07:44.357 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.kie.internal.services.KieAssemblersImpl
+
+09:07:44.358 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.kie.internal.services.KieRuntimesImpl
+
+09:07:44.358 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.kie.internal.services.KieWeaversImpl
+
+09:07:44.359 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.kie.internal.services.KieBeliefsImpl
+
+09:07:44.359 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Loading kie.conf from  jar:file:/home/lleveric/.m2/repository/org/drools/drools-model-compiler/7.30.0-SNAPSHOT/drools-model-compiler-7.30.0-SNAPSHOT.jar!/META-INF/kie.conf in classloader sun.misc.Launcher$AppClassLoader@3d4eac69
+09:07:44.361 [main] DEBUG org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.modelcompiler.CanonicalKieModuleProvider
+
+09:07:45.922 [main] INFO org.drools.compiler.kie.builder.impl.ClasspathKieProject - Found kmodule: file:/home/lleveric/projects/drools/kie-pmml/target/classes/META-INF/kmodule.xml
+09:07:45.922 [main] DEBUG org.drools.compiler.kie.builder.impl.ClasspathKieProject - KieModule URL type=file url=/home/lleveric/projects/drools/kie-pmml/target/classes
+09:07:45.958 [main] WARN org.drools.compiler.kie.builder.impl.ClasspathKieProject - Unable to find pom.properties in /home/lleveric/projects/drools/kie-pmml/target/classes
+09:07:45.961 [main] INFO org.drools.compiler.kie.builder.impl.ClasspathKieProject - Recursed up folders, found and used pom.xml /home/lleveric/projects/drools/kie-pmml/pom.xml
+09:07:45.965 [main] DEBUG org.drools.compiler.kie.builder.impl.ClasspathKieProject - Discovered classpath module org.drools:kie-pmml:7.30.0-SNAPSHOT
+09:07:45.969 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: FileKieModule[releaseId=org.drools:kie-pmml:7.30.0-SNAPSHOT,file=/home/lleveric/projects/drools/kie-pmml/target/classes]
+09:07:51.930 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+09:07:52.335 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:52.335 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+09:07:52.335 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:07:53.009 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0]
+09:07:53.009 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - Cannot load a KieRepositoryScanner, using the DummyKieScanner
+09:07:53.050 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+Mining Object - SampleScoreScoreCardDataScoreCardData( correlationId=123, modelName=SampleScore,  mResidenceState=false,  vResidenceState=KN,  mValidLicense=false,  vValidLicense=true,  mOccupation=false,  vOccupation=SKYDIVER,  mOverallScore=true,  vOverallScore=null,  mAge=false,  vAge=33.0 )
+09:07:53.073 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for SampleScoreScorecardRuleUnit
+Firing PartialScore_SampleScore_ResidenceStateScore_3
+Firing PartialScore_SampleScore_ValidLicenseScore_5
+Firing PartialScore_SampleScore_AgeScore_7
+Firing PartialScore_SampleScore_OccupationScore_11
+Firing Scorecard SampleScore output - OverallScore
+Firing Add PMMLResult with Scorecard output SampleScore - OverallScore
+Firing Score Card SampleScore
+Firing Scorecard SampleScore output - OverallScore
+Firing Update PMMLResult containing Scorecard output SampleScore - OverallScore
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+Firing simpleOutput_OverallScore_to_CalculatedScore
+Firing Update PMML4Result with aliased output CalculatedScore
+09:07:53.182 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:53.182 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 20
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={CalculatedScore=CalculatedScore - [PMML4OutputField - [PMML4DataField - [context=SampleScore, name=CalculatedScore, missing=false, valid=true], warning=No warning, target=false], value=41.345, weight=1.0, displayValue=CalculatedScore], OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=SampleScore, name=null, missing=false, valid=true], warning=No warning, target=false], value=41.345, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=SampleScore, score=41.345, holder=SampleScoreScoreCardDataScoreCardData( correlationId=123, modelName=SampleScore,  mResidenceState=false,  vResidenceState=KN,  mValidLicense=false,  vValidLicense=true,  mOccupation=false,  vOccupation=SKYDIVER,  mOverallScore=true,  vOverallScore=null,  mAge=false,  vAge=33.0 ), enableRC=true, pointsBelow=true, ranking={LX00=-1.0, RES=-10.0, CX2=-30.0}]}]
+09:07:53.719 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+09:07:53.759 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:53.759 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+09:07:53.759 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:07:54.157 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0]
+Mining Object - SampleScoreScoreCardDataScoreCardData( correlationId=123, modelName=SampleScore,  mResidenceState=false,  vResidenceState=KN,  mValidLicense=false,  vValidLicense=true,  mOccupation=false,  vOccupation=SKYDIVER,  mOverallScore=true,  vOverallScore=null,  mAge=false,  vAge=33.0 )
+09:07:54.199 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for SampleScoreScorecardRuleUnit
+Firing PartialScore_SampleScore_ResidenceStateScore_15
+Firing PartialScore_SampleScore_ValidLicenseScore_17
+Firing PartialScore_SampleScore_AgeScore_19
+Firing PartialScore_SampleScore_OccupationScore_23
+Firing Scorecard SampleScore output - OverallScore
+Firing Add PMMLResult with Scorecard output SampleScore - OverallScore
+Firing Score Card SampleScore
+Firing Scorecard SampleScore output - OverallScore
+Firing Update PMMLResult containing Scorecard output SampleScore - OverallScore
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+Firing simpleOutput_OverallScore_to_CalculatedScore
+Firing Update PMML4Result with aliased output CalculatedScore
+09:07:54.305 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:54.305 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 20
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={CalculatedScore=CalculatedScore - [PMML4OutputField - [PMML4DataField - [context=SampleScore, name=CalculatedScore, missing=false, valid=true], warning=No warning, target=false], value=41.345, weight=1.0, displayValue=CalculatedScore], OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=SampleScore, name=null, missing=false, valid=true], warning=No warning, target=false], value=41.345, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=SampleScore, score=41.345, holder=SampleScoreScoreCardDataScoreCardData( correlationId=123, modelName=SampleScore,  mResidenceState=false,  vResidenceState=KN,  mValidLicense=false,  vValidLicense=true,  mOccupation=false,  vOccupation=SKYDIVER,  mOverallScore=true,  vOverallScore=null,  mAge=false,  vAge=33.0 ), enableRC=true, pointsBelow=true, ranking={LX00=-1.0, RES=-10.0, CX2=-30.0}]}]
+09:07:54.660 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+09:07:54.676 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:54.676 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+09:07:54.676 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:07:54.987 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0]
+Mining Object - SimpleSetScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleSetScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=4,  mParam2=false,  vParam2=optA )
+09:07:55.021 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for SimpleSetScorecardScorecardRuleUnit
+Firing PartialScore_SimpleSetScorecard_ch2_25
+Firing PartialScore_SimpleSetScorecard_ch1_26
+Firing Scorecard SimpleSetScorecard output - OverallScore
+Firing Add PMMLResult with Scorecard output SimpleSetScorecard - OverallScore
+Firing Score Card SimpleSetScorecard
+Firing Scorecard SimpleSetScorecard output - OverallScore
+Firing Update PMMLResult containing Scorecard output SimpleSetScorecard - OverallScore
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:07:55.106 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:55.106 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 12
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=SimpleSetScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=113.0, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=SimpleSetScorecard, score=113.0, holder=SimpleSetScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleSetScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=4,  mParam2=false,  vParam2=optA ), enableRC=true, pointsBelow=true, ranking={null=-80.0}]}]
+Mining Object - SimpleSetScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleSetScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=5,  mParam2=false,  vParam2=optA )
+09:07:55.138 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for SimpleSetScorecardScorecardRuleUnit
+Firing PartialScore_SimpleSetScorecard_ch2_25
+Firing PartialScore_SimpleSetScorecard_ch1_27
+Firing Scorecard SimpleSetScorecard output - OverallScore
+Firing Add PMMLResult with Scorecard output SimpleSetScorecard - OverallScore
+Firing Score Card SimpleSetScorecard
+Firing Scorecard SimpleSetScorecard output - OverallScore
+Firing Update PMMLResult containing Scorecard output SimpleSetScorecard - OverallScore
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:07:55.144 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:55.144 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 12
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=SimpleSetScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=33.0, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=SimpleSetScorecard, score=33.0, holder=SimpleSetScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleSetScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=5,  mParam2=false,  vParam2=optA ), enableRC=true, pointsBelow=true, ranking={null=0.0}]}]
+Mining Object - SimpleSetScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleSetScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=-5,  mParam2=false,  vParam2=optC )
+09:07:55.145 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for SimpleSetScorecardScorecardRuleUnit
+Firing PartialScore_SimpleSetScorecard_ch2_24
+Firing PartialScore_SimpleSetScorecard_ch1_26
+Firing Scorecard SimpleSetScorecard output - OverallScore
+Firing Add PMMLResult with Scorecard output SimpleSetScorecard - OverallScore
+Firing Score Card SimpleSetScorecard
+Firing Scorecard SimpleSetScorecard output - OverallScore
+Firing Update PMMLResult containing Scorecard output SimpleSetScorecard - OverallScore
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:07:55.150 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:55.150 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 12
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=SimpleSetScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=123.0, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=SimpleSetScorecard, score=123.0, holder=SimpleSetScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleSetScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=-5,  mParam2=false,  vParam2=optC ), enableRC=true, pointsBelow=true, ranking={null=-90.0}]}]
+Mining Object - SimpleSetScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleSetScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=-5,  mParam2=false,  vParam2=optA )
+09:07:55.152 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for SimpleSetScorecardScorecardRuleUnit
+Firing PartialScore_SimpleSetScorecard_ch2_25
+Firing PartialScore_SimpleSetScorecard_ch1_26
+Firing Scorecard SimpleSetScorecard output - OverallScore
+Firing Add PMMLResult with Scorecard output SimpleSetScorecard - OverallScore
+Firing Score Card SimpleSetScorecard
+Firing Scorecard SimpleSetScorecard output - OverallScore
+Firing Update PMMLResult containing Scorecard output SimpleSetScorecard - OverallScore
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:07:55.157 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:55.157 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 12
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=SimpleSetScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=113.0, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=SimpleSetScorecard, score=113.0, holder=SimpleSetScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleSetScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=-5,  mParam2=false,  vParam2=optA ), enableRC=true, pointsBelow=true, ranking={null=-80.0}]}]
+09:07:55.624 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+09:07:55.654 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:55.654 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+09:07:55.654 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:07:56.041 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0]
+Mining Object - ScorecardCompoundPredicateScoreCardDataScoreCardData( correlationId=123, modelName=ScorecardCompoundPredicate,  mOverallScore=true,  vOverallScore=null,  mFinalscore=true,  vFinalscore=null,  mParam1=false,  vParam1=41.0,  mParam2=false,  vParam2=21.0 )
+09:07:56.114 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for ScorecardCompoundPredicateScorecardRuleUnit
+Firing PartialScore_ScorecardCompoundPredicate_ch2_29
+Firing PartialScore_ScorecardCompoundPredicate_ch1_32
+Firing Scorecard ScorecardCompoundPredicate output - Finalscore
+Firing Add PMMLResult with Scorecard output ScorecardCompoundPredicate - Finalscore
+Firing Scorecard ScorecardCompoundPredicate output - OverallScore
+Firing Add PMMLResult with Scorecard output ScorecardCompoundPredicate - OverallScore
+Firing Score Card ScorecardCompoundPredicate
+Firing Scorecard ScorecardCompoundPredicate output - Finalscore
+Firing Update PMMLResult containing Scorecard output ScorecardCompoundPredicate - Finalscore
+Firing Scorecard ScorecardCompoundPredicate output - OverallScore
+Firing Update PMMLResult containing Scorecard output ScorecardCompoundPredicate - OverallScore
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:07:56.320 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:56.320 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 18
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=ScorecardCompoundPredicate, name=null, missing=false, valid=true], warning=No warning, target=false], value=120.8, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=ScorecardCompoundPredicate, score=120.8, holder=ScorecardCompoundPredicateScoreCardDataScoreCardData( correlationId=123, modelName=ScorecardCompoundPredicate,  mOverallScore=true,  vOverallScore=null,  mFinalscore=true,  vFinalscore=null,  mParam1=false,  vParam1=41.0,  mParam2=false,  vParam2=21.0 ), enableRC=true, pointsBelow=false, ranking={reasonCh1=50.0, reasonCh2=5.0}], Finalscore=Finalscore - [PMML4OutputField - [PMML4DataField - [context=ScorecardCompoundPredicate, name=null, missing=false, valid=true], warning=No warning, target=false], value=120.8, weight=1.0, displayValue=Finalscore]}]
+Mining Object - ScorecardCompoundPredicateScoreCardDataScoreCardData( correlationId=123, modelName=ScorecardCompoundPredicate,  mOverallScore=true,  vOverallScore=null,  mFinalscore=true,  vFinalscore=null,  mParam1=false,  vParam1=40.0,  mParam2=false,  vParam2=25.0 )
+09:07:56.323 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for ScorecardCompoundPredicateScorecardRuleUnit
+Firing PartialScore_ScorecardCompoundPredicate_ch2_29
+Firing PartialScore_ScorecardCompoundPredicate_ch1_32
+Firing Scorecard ScorecardCompoundPredicate output - Finalscore
+Firing Add PMMLResult with Scorecard output ScorecardCompoundPredicate - Finalscore
+Firing Scorecard ScorecardCompoundPredicate output - OverallScore
+Firing Add PMMLResult with Scorecard output ScorecardCompoundPredicate - OverallScore
+Firing Score Card ScorecardCompoundPredicate
+Firing Scorecard ScorecardCompoundPredicate output - Finalscore
+Firing Update PMMLResult containing Scorecard output ScorecardCompoundPredicate - Finalscore
+Firing Scorecard ScorecardCompoundPredicate output - OverallScore
+Firing Update PMMLResult containing Scorecard output ScorecardCompoundPredicate - OverallScore
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:07:56.330 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:56.330 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 18
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=ScorecardCompoundPredicate, name=null, missing=false, valid=true], warning=No warning, target=false], value=120.8, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=ScorecardCompoundPredicate, score=120.8, holder=ScorecardCompoundPredicateScoreCardDataScoreCardData( correlationId=123, modelName=ScorecardCompoundPredicate,  mOverallScore=true,  vOverallScore=null,  mFinalscore=true,  vFinalscore=null,  mParam1=false,  vParam1=40.0,  mParam2=false,  vParam2=25.0 ), enableRC=true, pointsBelow=false, ranking={reasonCh1=50.0, reasonCh2=5.0}], Finalscore=Finalscore - [PMML4OutputField - [PMML4DataField - [context=ScorecardCompoundPredicate, name=null, missing=false, valid=true], warning=No warning, target=false], value=120.8, weight=1.0, displayValue=Finalscore]}]
+Mining Object - ScorecardCompoundPredicateScoreCardDataScoreCardData( correlationId=123, modelName=ScorecardCompoundPredicate,  mOverallScore=true,  vOverallScore=null,  mFinalscore=true,  vFinalscore=null,  mParam1=false,  vParam1=40.0,  mParam2=false,  vParam2=55.0 )
+09:07:56.332 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for ScorecardCompoundPredicateScorecardRuleUnit
+Firing PartialScore_ScorecardCompoundPredicate_ch2_30
+Firing PartialScore_ScorecardCompoundPredicate_ch1_31
+Firing Scorecard ScorecardCompoundPredicate output - Finalscore
+Firing Add PMMLResult with Scorecard output ScorecardCompoundPredicate - Finalscore
+Firing Scorecard ScorecardCompoundPredicate output - OverallScore
+Firing Add PMMLResult with Scorecard output ScorecardCompoundPredicate - OverallScore
+Firing Score Card ScorecardCompoundPredicate
+Firing Scorecard ScorecardCompoundPredicate output - Finalscore
+Firing Update PMMLResult containing Scorecard output ScorecardCompoundPredicate - Finalscore
+Firing Scorecard ScorecardCompoundPredicate output - OverallScore
+Firing Update PMMLResult containing Scorecard output ScorecardCompoundPredicate - OverallScore
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:07:56.341 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:56.341 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 18
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=ScorecardCompoundPredicate, name=null, missing=false, valid=true], warning=No warning, target=false], value=210.8, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=ScorecardCompoundPredicate, score=210.8, holder=ScorecardCompoundPredicateScoreCardDataScoreCardData( correlationId=123, modelName=ScorecardCompoundPredicate,  mOverallScore=true,  vOverallScore=null,  mFinalscore=true,  vFinalscore=null,  mParam1=false,  vParam1=40.0,  mParam2=false,  vParam2=55.0 ), enableRC=true, pointsBelow=false, ranking={reasonCh1=150.0, reasonCh2=-5.0}], Finalscore=Finalscore - [PMML4OutputField - [PMML4DataField - [context=ScorecardCompoundPredicate, name=null, missing=false, valid=true], warning=No warning, target=false], value=210.8, weight=1.0, displayValue=Finalscore]}]
+Mining Object - ScorecardCompoundPredicateScoreCardDataScoreCardData( correlationId=123, modelName=ScorecardCompoundPredicate,  mOverallScore=true,  vOverallScore=null,  mFinalscore=true,  vFinalscore=null,  mParam1=false,  vParam1=4.0,  mParam2=false,  vParam2=-25.0 )
+09:07:56.343 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for ScorecardCompoundPredicateScorecardRuleUnit
+Firing PartialScore_ScorecardCompoundPredicate_ch1_28
+Firing PartialScore_ScorecardCompoundPredicate_ch2_30
+Firing Scorecard ScorecardCompoundPredicate output - Finalscore
+Firing Add PMMLResult with Scorecard output ScorecardCompoundPredicate - Finalscore
+Firing Scorecard ScorecardCompoundPredicate output - OverallScore
+Firing Add PMMLResult with Scorecard output ScorecardCompoundPredicate - OverallScore
+Firing Score Card ScorecardCompoundPredicate
+Firing Scorecard ScorecardCompoundPredicate output - Finalscore
+Firing Update PMMLResult containing Scorecard output ScorecardCompoundPredicate - Finalscore
+Firing Scorecard ScorecardCompoundPredicate output - OverallScore
+Firing Update PMMLResult containing Scorecard output ScorecardCompoundPredicate - OverallScore
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:07:56.350 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:56.350 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 18
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=ScorecardCompoundPredicate, name=null, missing=false, valid=true], warning=No warning, target=false], value=30.8, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=ScorecardCompoundPredicate, score=30.8, holder=ScorecardCompoundPredicateScoreCardDataScoreCardData( correlationId=123, modelName=ScorecardCompoundPredicate,  mOverallScore=true,  vOverallScore=null,  mFinalscore=true,  vFinalscore=null,  mParam1=false,  vParam1=4.0,  mParam2=false,  vParam2=-25.0 ), enableRC=true, pointsBelow=false, ranking={reasonCh2=-5.0, reasonCh1=-30.0}], Finalscore=Finalscore - [PMML4OutputField - [PMML4DataField - [context=ScorecardCompoundPredicate, name=null, missing=false, valid=true], warning=No warning, target=false], value=30.8, weight=1.0, displayValue=Finalscore]}]
+09:07:56.881 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+09:07:56.902 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:56.902 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+09:07:56.903 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:07:57.344 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0]
+Mining Object - SampleScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SampleScorecard,  mCage=false,  vCage=engineering,  mCalculatedScore=true,  vCalculatedScore=null,  mAge=false,  vAge=25,  mWage=false,  vWage=500.0 )
+09:07:57.403 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for SampleScorecardScorecardRuleUnit
+Firing PartialScore_SampleScorecard_cageScore_35
+Firing PartialScore_SampleScorecard_wageScore_41
+Firing PartialScore_SampleScorecard_ageScore_45
+Firing Scorecard SampleScorecard rank code 1
+Firing Add Scorecard output SampleScorecard rank code 1 to PMMLResult
+Firing Scorecard SampleScorecard rank code 2
+Firing Add Scorecard output SampleScorecard rank code 2 to PMMLResult
+Firing Scorecard SampleScorecard rank code 3
+Firing Add Scorecard output SampleScorecard rank code 3 to PMMLResult
+Firing Scorecard SampleScorecard output - CalculatedScore
+Firing Add PMMLResult with Scorecard output SampleScorecard - CalculatedScore
+Firing Score Card SampleScorecard
+Firing Scorecard SampleScorecard output - CalculatedScore
+Firing Update PMMLResult containing Scorecard output SampleScorecard - CalculatedScore
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+Firing Scorecard SampleScorecard rank code 1
+Firing Scorecard SampleScorecard rank code 2
+Firing Scorecard SampleScorecard rank code 3
+Firing Update PMMLResult with Scorecard output SampleScorecard rank code 1
+Firing Update PMMLResult with Scorecard output SampleScorecard rank code 2
+Firing Update PMMLResult with Scorecard output SampleScorecard rank code 3
+Firing simpleOutput_CalculatedScore_to_OutScore
+Firing Update PMML4Result with aliased output OutScore
+09:07:57.562 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:57.562 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 31
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OutRC3=OutRC3 - [PMML4OutputField - [PMML4DataField - [context=SampleScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=RC1, weight=1.0, displayValue=OutRC3], OutRC2=OutRC2 - [PMML4OutputField - [PMML4DataField - [context=SampleScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=RC1, weight=1.0, displayValue=OutRC2], CalculatedScore=CalculatedScore - [PMML4OutputField - [PMML4DataField - [context=SampleScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=29.0, weight=1.0, displayValue=CalculatedScore], OutRC1=OutRC1 - [PMML4OutputField - [PMML4DataField - [context=SampleScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=RC2, weight=1.0, displayValue=OutRC1], OutScore=OutScore - [PMML4OutputField - [PMML4DataField - [context=SampleScorecard, name=OutScore, missing=false, valid=true], warning=No warning, target=false], value=29.0, weight=1.0, displayValue=OutScore], ScoreCard=ScoreCard [modelName=SampleScorecard, score=29.0, holder=SampleScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SampleScorecard,  mCage=false,  vCage=engineering,  mCalculatedScore=true,  vCalculatedScore=null,  mAge=false,  vAge=25,  mWage=false,  vWage=500.0 ), enableRC=true, pointsBelow=true, ranking={RC2=18.0, RC1=16.0, RC3=-16.0}]}]
+09:07:57.875 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+09:07:57.883 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:57.883 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+09:07:57.883 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:07:58.186 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0]
+Mining Object - SimpleSetScorecardWithSpaceValueScoreCardDataScoreCardData( correlationId=123, modelName=SimpleSetScorecardWithSpaceValue,  mParam=false,  vParam=optA,  mOverallScore=true,  vOverallScore=null )
+09:07:58.231 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for SimpleSetScorecardWithSpaceValueScorecardRuleUnit
+Firing PartialScore_SimpleSetScorecardWithSpaceValue_ch_47
+Firing Scorecard SimpleSetScorecardWithSpaceValue output - OverallScore
+Firing Add PMMLResult with Scorecard output SimpleSetScorecardWithSpaceValue - OverallScore
+Firing Score Card SimpleSetScorecardWithSpaceValue
+Firing Scorecard SimpleSetScorecardWithSpaceValue output - OverallScore
+Firing Update PMMLResult containing Scorecard output SimpleSetScorecardWithSpaceValue - OverallScore
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:07:58.331 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:58.331 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 11
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=SimpleSetScorecardWithSpaceValue, name=null, missing=false, valid=true], warning=No warning, target=false], value=13.0, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=SimpleSetScorecardWithSpaceValue, score=13.0, holder=SimpleSetScorecardWithSpaceValueScoreCardDataScoreCardData( correlationId=123, modelName=SimpleSetScorecardWithSpaceValue,  mParam=false,  vParam=optA,  mOverallScore=true,  vOverallScore=null ), enableRC=true, pointsBelow=true, ranking={null=15.0}]}]
+09:07:58.934 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+09:07:58.945 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:58.945 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+09:07:58.945 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:07:59.250 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0]
+Mining Object - SimpleScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=10.0,  mParam2=false,  vParam2=15.0 )
+09:07:59.299 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for SimpleScorecardScorecardRuleUnit
+Firing PartialScore_SimpleScorecard_ch1_48
+Firing PartialScore_SimpleScorecard_ch2_51
+Firing Scorecard SimpleScorecard output - OverallScore
+Firing Add PMMLResult with Scorecard output SimpleScorecard - OverallScore
+Firing Score Card SimpleScorecard
+Firing Scorecard SimpleScorecard output - OverallScore
+Firing Update PMMLResult containing Scorecard output SimpleScorecard - OverallScore
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:07:59.416 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:59.416 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 14
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=SimpleScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=40.8, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=SimpleScorecard, score=40.8, holder=SimpleScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=10.0,  mParam2=false,  vParam2=15.0 ), enableRC=true, pointsBelow=true, ranking={reasonCh1=5.0, reasonCh2=-6.0}]}]
+Mining Object - SimpleScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=51.0,  mParam2=false,  vParam2=12.0 )
+09:07:59.417 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for SimpleScorecardScorecardRuleUnit
+Firing PartialScore_SimpleScorecard_ch1_49
+Firing PartialScore_SimpleScorecard_ch2_51
+Firing Scorecard SimpleScorecard output - OverallScore
+Firing Add PMMLResult with Scorecard output SimpleScorecard - OverallScore
+Firing Score Card SimpleScorecard
+Firing Scorecard SimpleScorecard output - OverallScore
+Firing Update PMMLResult containing Scorecard output SimpleScorecard - OverallScore
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:07:59.421 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:07:59.421 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 14
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=SimpleScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=120.8, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=SimpleScorecard, score=120.8, holder=SimpleScorecardScoreCardDataScoreCardData( correlationId=123, modelName=SimpleScorecard,  mOverallScore=true,  vOverallScore=null,  mParam1=false,  vParam1=51.0,  mParam2=false,  vParam2=12.0 ), enableRC=true, pointsBelow=true, ranking={reasonCh2=-6.0, reasonCh1=-75.0}]}]
+09:08:00.088 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Attempting to apply template for: ComplexScore [complexScore=( ( 1.8 * param ) + 25 ), characteristicName=ch1, attributeIndex=2, fldNames=[param]]
+Attempting to apply template for: ComplexScore [complexScore=( ( 2.5 * param ) + 50 ), characteristicName=ch1, attributeIndex=1, fldNames=[param]]
+09:08:00.122 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:08:00.122 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+09:08:00.122 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:08:00.341 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0]
+Mining Object - ComplexPartialScoreScorecardScoreCardDataScoreCardData( correlationId=123, modelName=ComplexPartialScoreScorecard,  mParam=false,  vParam=5.0,  mOverallScore=true,  vOverallScore=null )
+09:08:00.365 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for ComplexPartialScoreScorecardScorecardRuleUnit
+Firing PartialScore_RowScore ComplexPartialScoreScorecard_ch1_2
+setting a score!
+Firing PartialScore_RowScore ComplexPartialScoreScorecard_ch1_1
+setting a score!
+Firing PartialScore_ComplexPartialScoreScorecard_ch1_52
+Firing Scorecard ComplexPartialScoreScorecard output - OverallScore
+Firing Add PMMLResult with Scorecard output ComplexPartialScoreScorecard - OverallScore
+Firing Score Card ComplexPartialScoreScorecard
+Firing Scorecard ComplexPartialScoreScorecard output - OverallScore
+Firing Update PMMLResult containing Scorecard output ComplexPartialScoreScorecard - OverallScore
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:08:00.432 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:08:00.432 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 13
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=ComplexPartialScoreScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=20.0, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=ComplexPartialScoreScorecard, score=20.0, holder=ComplexPartialScoreScorecardScoreCardDataScoreCardData( correlationId=123, modelName=ComplexPartialScoreScorecard,  mParam=false,  vParam=5.0,  mOverallScore=true,  vOverallScore=null ), enableRC=true, pointsBelow=true, ranking={null=-15.0}]}]
+Mining Object - ComplexPartialScoreScorecardScoreCardDataScoreCardData( correlationId=123, modelName=ComplexPartialScoreScorecard,  mParam=false,  vParam=40.0,  mOverallScore=true,  vOverallScore=null )
+09:08:00.433 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for ComplexPartialScoreScorecardScorecardRuleUnit
+Firing PartialScore_RowScore ComplexPartialScoreScorecard_ch1_2
+setting a score!
+Firing PartialScore_RowScore ComplexPartialScoreScorecard_ch1_1
+setting a score!
+Firing PartialScore_ComplexPartialScoreScorecard_ch1_54
+Firing Scorecard ComplexPartialScoreScorecard output - OverallScore
+Firing Add PMMLResult with Scorecard output ComplexPartialScoreScorecard - OverallScore
+Firing Score Card ComplexPartialScoreScorecard
+Firing Scorecard ComplexPartialScoreScorecard output - OverallScore
+Firing Update PMMLResult containing Scorecard output ComplexPartialScoreScorecard - OverallScore
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:08:00.436 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:08:00.436 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 13
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=ComplexPartialScoreScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=150.0, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=ComplexPartialScoreScorecard, score=150.0, holder=ComplexPartialScoreScorecardScoreCardDataScoreCardData( correlationId=123, modelName=ComplexPartialScoreScorecard,  mParam=false,  vParam=40.0,  mOverallScore=true,  vOverallScore=null ), enableRC=true, pointsBelow=true, ranking={null=-145.0}]}]
+Mining Object - ComplexPartialScoreScorecardScoreCardDataScoreCardData( correlationId=123, modelName=ComplexPartialScoreScorecard,  mParam=false,  vParam=100.0,  mOverallScore=true,  vOverallScore=null )
+09:08:00.437 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for ComplexPartialScoreScorecardScorecardRuleUnit
+Firing PartialScore_RowScore ComplexPartialScoreScorecard_ch1_2
+setting a score!
+Firing PartialScore_RowScore ComplexPartialScoreScorecard_ch1_1
+setting a score!
+Firing PartialScore_ComplexPartialScoreScorecard_ch1_53
+Firing Scorecard ComplexPartialScoreScorecard output - OverallScore
+Firing Add PMMLResult with Scorecard output ComplexPartialScoreScorecard - OverallScore
+Firing Score Card ComplexPartialScoreScorecard
+Firing Scorecard ComplexPartialScoreScorecard output - OverallScore
+Firing Update PMMLResult containing Scorecard output ComplexPartialScoreScorecard - OverallScore
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+09:08:00.439 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:08:00.440 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 13
+Results - PMML4Result [correlationId=123, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=ComplexPartialScoreScorecard, name=null, missing=false, valid=true], warning=No warning, target=false], value=205.0, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=ComplexPartialScoreScorecard, score=205.0, holder=ComplexPartialScoreScorecardScoreCardDataScoreCardData( correlationId=123, modelName=ComplexPartialScoreScorecard,  mParam=false,  vParam=100.0,  mOverallScore=true,  vOverallScore=null ), enableRC=true, pointsBelow=true, ranking={null=-200.0}]}]
+09:08:00.719 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+09:08:00.732 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:08:00.732 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+09:08:00.732 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:08:01.143 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0]
+09:08:01.168 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:08:01.455 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+09:08:01.468 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:08:01.468 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+09:08:01.468 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:08:02.006 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0]
+09:08:02.043 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:08:02.598 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+09:08:02.608 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:08:02.608 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+09:08:02.608 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+09:08:02.989 [main] DEBUG org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0]
+09:08:03.011 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now DISPOSED
+Mining Object - SampleScoreScoreCardDataScoreCardData( correlationId=125, modelName=SampleScore,  mResidenceState=false,  vResidenceState=TN,  mValidLicense=false,  vValidLicense=false,  mOccupation=false,  vOccupation=STUDENT,  mOverallScore=true,  vOverallScore=null,  mAge=false,  vAge=10.0 )
+09:08:03.020 [main] DEBUG org.drools.core.common.DefaultAgenda - State was INACTIVE is now FIRING_ALL_RULES
+Firing RuleUnitIndicator
+Rules execution available for SampleScoreScorecardRuleUnit
+Firing PartialScore_SampleScore_ResidenceStateScore_83
+Firing PartialScore_SampleScore_ValidLicenseScore_85
+Firing PartialScore_SampleScore_AgeScore_87
+Firing PartialScore_SampleScore_OccupationScore_88
+Firing Scorecard SampleScore output - OverallScore
+Firing Add PMMLResult with Scorecard output SampleScore - OverallScore
+Firing Score Card SampleScore
+Firing Scorecard SampleScore output - OverallScore
+Firing Update PMMLResult containing Scorecard output SampleScore - OverallScore
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Cumulate Code Scores
+Firing Detect Scorecard ReasonCode Change
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Sort Scorecard Reason Codes
+Firing Integrate Scorecard ReasonCode Map
+Firing simpleOutput_OverallScore_to_CalculatedScore
+Firing Update PMML4Result with aliased output CalculatedScore
+09:08:03.128 [main] DEBUG org.drools.core.common.DefaultAgenda - State was FIRING_ALL_RULES is now HALTING
+09:08:03.128 [main] DEBUG org.drools.core.common.DefaultAgenda - State was HALTING is now INACTIVE
+Count of rules = 22
+Results - PMML4Result [correlationId=125, segmentationId=null, segmentId=null, segmentIndex=0, resultCode=OK, resultVariables={CalculatedScore=CalculatedScore - [PMML4OutputField - [PMML4DataField - [context=SampleScore, name=CalculatedScore, missing=false, valid=true], warning=No warning, target=false], value=39.345, weight=1.0, displayValue=CalculatedScore], OverallScore=OverallScore - [PMML4OutputField - [PMML4DataField - [context=SampleScore, name=null, missing=false, valid=true], warning=No warning, target=false], value=39.345, weight=1.0, displayValue=OverallScore], ScoreCard=ScoreCard [modelName=SampleScore, score=39.345, holder=SampleScoreScoreCardDataScoreCardData( correlationId=125, modelName=SampleScore,  mResidenceState=false,  vResidenceState=TN,  mValidLicense=false,  vValidLicense=false,  mOccupation=false,  vOccupation=STUDENT,  mOverallScore=true,  vOverallScore=null,  mAge=false,  vAge=10.0 ), enableRC=true, pointsBelow=true, ranking={LX00=1.0, OCC=-5.0, RES=-5.0, CX1=-30.0}]}]
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.13 s - in org.kie.pmml.pmml_4_2.predictive.models.ScorecardTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  29.307 s
+[INFO] Finished at: 2019-11-06T09:08:03-08:00
+[INFO] ------------------------------------------------------------------------
